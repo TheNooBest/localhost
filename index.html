@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PHP Test</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <div class="jumbotron text-center">
+      <h1>Тестовое задание Greensight</h1>
+      <p>На стажировку PHP-разработчика</p>
+    </div>
+
+    <div class="container" id="main">
+      <form id="registerform" method="post">
+        <div class="form-group">
+          <label for="firstNameInput">Введите ваше имя</label>
+          <input type="text" class="form-control" id="firstNameInput" name="firstName" placeholder="Ваше имя">
+        </div>
+        <div class="form-group">
+          <label for="secondNameInput">Введите вашу фамилию</label>
+          <input type="text" class="form-control" id="secondNameInput" name="secondName" placeholder="Ваша фамилия">
+        </div>
+        <div class="form-group">
+          <label for="emailInput">Введите адрес вашей электронной почты</label>
+          <input type="email" class="form-control" id="emailInput" name="email" placeholder="Ваш email">
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Введите пароль</label>
+          <input type="password" class="form-control" id="passwordInput" name="password" placeholder="qwerty - плохой пароль">
+        </div>
+        <div class="form-group">
+          <label for="passconfirmInput">Повторите пароль</label>
+          <input type="password" class="form-control" id="passconfirmInput" name="passconfirm" placeholder="******">
+        </div>
+        <p><button type="submit" class="btn btn-primary">Зарегестрироваться</button></p>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
