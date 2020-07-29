@@ -25,23 +25,32 @@ $('#registerform').submit(function(e) {
 
 showFlashSuccessMessage = function(text) {
     element = $('<div></div>', {
-        'class': 'alert alert-success fade show',
+        'class': 'alert alert-success',
+        'style': 'display: none;',
+        'role': 'alert',
         text: text
     });
     $('#main').prepend(element);
+    $(element).slideDown();
 }
 
 showFlashDangerMessage = function(text) {
     element = $('<div></div>', {
-        'class': 'alert alert-danger fade show',
+        'class': 'alert alert-danger',
+        'style': 'display: none;',
+        'role': 'alert',
         text: text
     });
-    hideFlashMessage(element);
     $('#main').prepend(element);
+    $(element).slideDown();
+    hideFlashMessage(element);
 }
 
 hideFlashMessage = function(element) {
     setTimeout(function() {
-        $(element).alert('close');
+        // $(element).alert('close');
+        $(element).slideUp('slow', function() {
+            $(element).remove();
+        });
     }, 5000);
 }
