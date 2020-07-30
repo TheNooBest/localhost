@@ -1,6 +1,8 @@
+var lastElement = null;
+var lastElementTimeout = null;
+
 $('#registerform').submit(function(e) {
     e.preventDefault();
-    console.log($(this).serialize());
     $.ajax({
         type: "POST",
         url: 'action.php',
@@ -9,7 +11,15 @@ $('#registerform').submit(function(e) {
         {
             var jsonData = JSON.parse(response);
 
-            console.log(jsonData);
+            console.log(lastElement);
+            if (lastElement) {
+                clearTimeout(lastElementTimeout);
+                $(lastElement).slideUp('linear', function() {
+                    $(this).remove();
+                });
+                lastElement = null;
+            }
+
             if (jsonData['status'] == "1")
             {
                 showFlashSuccessMessage(jsonData['message']);
@@ -31,7 +41,8 @@ showFlashSuccessMessage = function(text) {
         text: text
     });
     $('#main').prepend(element);
-    $(element).slideDown();
+    $(element).slideDown('linear');
+    lastElement = element;
 }
 
 showFlashDangerMessage = function(text) {
@@ -42,15 +53,16 @@ showFlashDangerMessage = function(text) {
         text: text
     });
     $('#main').prepend(element);
-    $(element).slideDown();
-    hideFlashMessage(element);
+    $(element).slideDown('linear');
+    lastElement = element;
+    hideFlashMessage(element, 5000);
 }
 
-hideFlashMessage = function(element) {
-    setTimeout(function() {
-        // $(element).alert('close');
-        $(element).slideUp('slow', function() {
+hideFlashMessage = function(element, timeout) {
+    lastElementTimeout = setTimeout(function() {
+        $(element).slideUp('linear', function() {
             $(element).remove();
         });
-    }, 5000);
+        lastElement = null;
+    }, timeout);
 }
